@@ -1,0 +1,21 @@
+server:
+  port: 9527
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 18
+      minimum-idle: 60000
+      idle-timeout: 30000
+      max-lifetime: 60000
+      validation-timeout: 3000
+      login-timeout: 5
+    url: jdbc:mysql://localhost:3306/managerserver?serverTimezone=UTC&zeroDateTimeBehavior=CONVERT_TO_NULL
+    username: root
+    password: 8761797
+
+mybatis:
+  type-aliases-package: com.github.anhtom2000.bean
+

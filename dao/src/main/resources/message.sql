@@ -1,0 +1,7 @@
+CREATE TABLE tb_message(
+name VARCHAR (255) NOT NULL COMMENT '消息发出者用户名',
+to VARCHAR (255) NOT NULL COMMENT '消息接收者用户名',
+content text NOT NULL COMMENT '消息内容',
+isPull BIT NOT NULL DEFAULT 0 COMMENT '是否是新消息',
+PRIMARY KEY(name)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT = '消息表'

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--父工程的打包方式必须为pom-->
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>server</module>
+        <module>dao</module>
+        <module>commom</module>
+        <module>bean</module>
+        <module>service</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.github.anhtom2000</groupId>
+    <artifactId>managerserver</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <java.version>11</java.version>
+        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+        <modules.version>0.0.1-SNAPSHOT</modules.version>
+        <lombok.version>1.16.18</lombok.version>
+        <gson.version>2.8.6</gson.version>
+        <Hikari.version>3.4.2</Hikari.version>
+        <mysql.version>8.0.18</mysql.version>
+        <spring.mybatis.boot.version>2.1.1</spring.mybatis.boot.version>
+    </properties>
+
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter</artifactId>
+               <version>${spring.boot.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-web</artifactId>
+               <version>${spring.boot.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>com.github.anhtom2000</groupId>
+               <artifactId>server</artifactId>
+               <version>${modules.version}</version>
+           </dependency>
+           <!--springboot支持的jdbc      hikari数据源-->
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-jdbc</artifactId>
+               <version>${spring.boot.version}</version>
+               <exclusions>
+                   <!--排除tomcat自带的数据源-->
+                   <exclusion>
+                       <groupId>org.apache.tomcat</groupId>
+                       <artifactId>tomcat-jdbc</artifactId>
+                   </exclusion>
+               </exclusions>
+           </dependency>
+
+           <!--引入hikari数据源依赖-->
+           <dependency>
+               <groupId>com.zaxxer</groupId>
+               <artifactId>HikariCP</artifactId>
+               <version>${Hikari.version}</version>
+           </dependency>
+           <!--引入mysql连接依赖-->
+           <dependency>
+               <groupId>mysql</groupId>
+               <artifactId>mysql-connector-java</artifactId>
+               <version>${mysql.version}</version>
+           </dependency>
+
+           <!--mybatis整合Springboot-->
+           <dependency>
+               <groupId>org.mybatis.spring.boot</groupId>
+               <artifactId>mybatis-spring-boot-starter</artifactId>
+               <version>${spring.mybatis.boot.version}</version>
+           </dependency>
+
+           <!--引入lombok插件依赖-->
+<!--           <dependency>-->
+<!--               <groupId>org.projectlombok</groupId>-->
+<!--               <artifactId>lombok</artifactId>-->
+<!--               <version>${lombok.version}</version>-->
+
+<!--           </dependency>-->
+
+           <dependency>
+               <groupId>com.github.anhtom2000</groupId>
+               <artifactId>dao</artifactId>
+               <version>${modules.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>com.github.anhtom2000</groupId>
+               <artifactId>commom</artifactId>
+               <version>${modules.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>com.github.anhtom2000</groupId>
+               <artifactId>bean</artifactId>
+               <version>${modules.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>com.github.anhtom2000</groupId>
+               <artifactId>service</artifactId>
+               <version>${modules.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>com.google.code.gson</groupId>
+               <artifactId>gson</artifactId>
+               <version>${gson.version}</version>
+           </dependency>
+
+           <dependency>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-starter-test</artifactId>
+               <version>${spring.boot.version}</version>
+               <scope>test</scope>
+           </dependency>
+
+           <dependency>
+               <groupId>junit</groupId>
+               <artifactId>junit</artifactId>
+               <version>4.13</version>
+               <scope>test</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+</project>
